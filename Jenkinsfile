@@ -2,15 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Who Am I') {
+        stage('Print Message') {
             steps {
-                bat 'whoami'
-            }
-        }
-        stage('Try full path to http-server') {
-            steps {
-                bat 'dir'
-                bat 'start "" "C:\\Users\\Srivats\\AppData\\Roaming\\npm\\http-server.cmd" -p 8082'
+                echo '✅ Hello! This is a simple Jenkins Pipeline Job.'
             }
         }
     }
