@@ -12,7 +12,7 @@ pipeline {
             steps {
                 bat '''
                     cd %WORKSPACE%
-                    start http-server -p 8082
+                    bat 'http-server -p 8082'
                 '''
                 echo 'Serving site at http://localhost:8082'
             }
