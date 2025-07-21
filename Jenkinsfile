@@ -7,11 +7,10 @@ pipeline {
                 bat 'whoami'
             }
         }
-        stage('Try http-server with logs') {
+        stage('Try full path to http-server') {
             steps {
-                bat 'npm install -g http-server'
                 bat 'dir'
-                bat 'http-server -p 8082 > server.log 2>&1'
+                bat '"C:\\Users\\Srivats\\AppData\\Roaming\\npm\\http-server.cmd" -p 8082 > server.log 2>&1'
                 bat 'type server.log'
             }
         }
