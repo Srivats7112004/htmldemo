@@ -3,24 +3,16 @@ pipeline {
     stages {
         stage('Install http-server') {
             steps {
-                echo 'Installing http-server...'
                 bat 'npm install -g http-server'
             }
         }
-        stage('Serve HTML') {
+        stage('Run Server') {
             steps {
-                echo 'Starting server...'
                 bat '''
                     cd %WORKSPACE%
-                    start /b http-server . -p 8082
-                    timeout /t 5 >nul
+                    start "" cmd /c "http-server -p 8082"
+                    timeout /t 5
                 '''
-            }
-        }
-        stage('Open in Browser') {
-            steps {
-                echo 'Trying to open in default browser...'
-                bat 'start http://localhost:8082'
             }
         }
     }
