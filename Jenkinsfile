@@ -12,7 +12,7 @@ pipeline {
                 echo 'Starting server...'
                 bat '''
                     cd %WORKSPACE%
-                    start http-server -p 8082
+                    start /b http-server . -p 8082
                     timeout /t 5 >nul
                 '''
             }
