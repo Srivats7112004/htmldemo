@@ -11,12 +11,21 @@ pipeline {
 
         stage('Serve HTML') {
             steps {
-                echo 'Starting http-server in background...'
+                echo 'Starting http-server on port 8082...'
+
+                // Start server in background
                 bat '''
-                    start /B http-server -p 8082 > nul 2>&1
-                    ping -n 5 127.0.0.1 > nul
+                    start /B http-server -p 8082
+                    timeout /T 5 > nul
                 '''
-                echo 'Server started on http://localhost:8082'
+
+                echo 'Server should now be live at http://localhost:8082'
+            }
+        }
+
+        stage('Success') {
+            steps {
+                echo 'Build completed successfully!'
             }
         }
     }
